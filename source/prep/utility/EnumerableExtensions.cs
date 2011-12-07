@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using prep.collections;
 using prep.utility.filtering;
+using prep.utility.sorting;
 
 namespace prep.utility
 {
@@ -25,5 +28,31 @@ namespace prep.utility
       sorted.Sort(comparer);
       return sorted;
     }
+
+    public static IEnumerable<ItemType> sort_by_descending<ItemType, PropertyType>(this IEnumerable<ItemType> items, Func<ItemType, PropertyType> accessor) where PropertyType : IComparable, IComparable<PropertyType>
+    {
+        //List<ItemType> obj = new List<ItemType>();
+        //obj.AddRange(items);
+        //return obj.Sort(); 
+
+
+        var comparer = Order<ItemType>.by_descending(accessor);
+
+        return items.sort_using(comparer);
+    }
+
+    public static IEnumerable<ItemType> sort_by<ItemType, PropertyType>(this IEnumerable<ItemType> items, Func<ItemType, PropertyType> accessor) where PropertyType : IComparable, IComparable<PropertyType>
+    {
+        //List<ItemType> obj = new List<ItemType>();
+        //obj.AddRange(items);
+        //return obj.Sort(); 
+
+
+        var comparer = Order<ItemType>.by(accessor);
+
+        return items.sort_using(comparer);
+    }
+
+
   }
 }

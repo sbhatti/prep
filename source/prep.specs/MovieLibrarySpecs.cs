@@ -331,7 +331,7 @@ namespace prep.specs
                  * Movie classes.*/
 
         results.ShouldContainOnlyInOrder(the_ring, theres_something_about_mary, a_bugs_life, cars, shrek,
-                                         indiana_jones_and_the_temple_of_doom,
+                                        indiana_jones_and_the_temple_of_doom,
                                          pirates_of_the_carribean);
       };
     }
