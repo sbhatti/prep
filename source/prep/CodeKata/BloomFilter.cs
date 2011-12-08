@@ -19,9 +19,12 @@ namespace prep.CodeKata
 
         public bool Contains(string element)
         {
+            
             foreach (int hash in Hasher<string>.GetHash(element))
-           
-            return filter[hash % filterSize];
+            {
+                if (!filter[hash % filterSize]) return false;
+            }
+            return true;
         }
 
     }
