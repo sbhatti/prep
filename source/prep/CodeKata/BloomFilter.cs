@@ -6,14 +6,23 @@ using System.Text;
 
 namespace prep.CodeKata
 {
-    class BloomFilter
+    class BloomFilter<ElementType>
     {
-        private const int filterSize = 10; 
-        BitArray filter = new BitArray(filterSize);
+        private int filterSize; 
+        BitArray filter;
+        private int HashSize { get; set; }
 
-        public void AddElement(string element)
+        public BloomFilter(int filterSize, int hashSize)
         {
-            foreach (int hash in Hasher<string>.GetHash(element))
+            this.filterSize = filterSize;
+            HashSize = hashSize;
+            filter = new BitArray(filterSize);
+            
+        }
+
+        public void AddElement(ElementType element)
+        {
+            foreach (int hash in Hasher<ElementType>.GetHash(element))
                 filter[hash%filterSize] = true;
         }
 

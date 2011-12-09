@@ -7,12 +7,8 @@ namespace prep.CodeKata
 {
     class Hasher<T>
     {
-        static int NumberOfHashFunction { get; set; }
+        public static int NumberOfHashFunction { get; set; }
         
-        //public  static int GetHash(T element)
-        //{
-        //    return element.GetHashCode();
-        //}
 
         public static IEnumerable<int> GetHash(T element)
         {
